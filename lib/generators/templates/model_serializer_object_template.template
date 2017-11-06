@@ -1,0 +1,5 @@
+class <%= model.camelize %>Serializer < ApplicationSerializer
+  attributes(
+    :id
+  )
+end

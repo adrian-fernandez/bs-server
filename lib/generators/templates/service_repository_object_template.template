@@ -1,0 +1,21 @@
+module Api
+  module <%= api_version.upcase %>
+    module Repositories
+      class <%= model.camelize.pluralize %>Repository < GenericRepository
+        def fuzzy_search_fields
+          %w[]
+        end
+
+        def visible_by(*)
+          @collection
+        end
+
+        private
+
+          def no_selectable_fields
+            []
+          end
+      end
+    end
+  end
+end

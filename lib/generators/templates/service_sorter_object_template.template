@@ -1,0 +1,38 @@
+module Api
+  module <%= api_version.upcase %>
+    module Sorters
+      class <%= model %>Sorter < GenericSorter
+        class << self
+          def sortable_fields
+            %w[id]
+          end
+
+          def direct_sorting_fields
+            %w[id]
+          end
+
+          def default_sortable_field
+            :id
+          end
+
+          def table_name
+            '<%= model %>.downcase.pluralize.underscore'
+          end
+
+          private
+
+          def sorting_field(params_sort)
+            unless sortable_fields.include?(params_sort)
+              return { condition: "#{table_name}.#{default_sortable_field}" }
+            end
+
+            case params_sort
+            when *direct_sorting_fields
+              "#{table_name}.#{params_sort}"
+            end
+          end
+        end
+      end
+    end
+  end
+end

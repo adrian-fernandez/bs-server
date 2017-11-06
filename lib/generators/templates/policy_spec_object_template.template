@@ -1,0 +1,72 @@
+require 'rails_helper'
+require 'pundit/rspec'
+
+RSpec.describe <%= model.camelize %>Policy do
+  subject { described_class }
+  let!(:role_admin) { Role.find_by(name: 'admin') || create(:role, name: 'admin') }
+  let!(:role_user) { Role.find_by(name: 'user') || create(:role, name: 'user') }
+  let!(:admin) { create :user, role: role_admin }
+  let!(:user) { create :user, role: role_user }
+  let(:policy_context_admin) { Struct.new(:user, :params).new(admin, {}) }
+  let(:policy_context_user) { Struct.new(:user, :params).new(user, {}) }
+
+  permissions :create? do
+    context 'For admins' do
+    end
+
+    context 'For normal users' do
+    end
+  end
+
+  permissions :update? do
+    let!(:my_<%= model %>) { create :<%= model %>, user: user }
+
+    context 'For admins' do
+      it 'allows access' do
+        expect(subject).to permit(policy_context_admin, my_<%= model %>)
+      end
+    end
+
+    context 'For normal users' do
+      let!(:other_<%= model %>) { create :<%= model %> }
+
+      context 'My own <%= model %>' do
+        it 'allows access' do
+          expect(subject).to permit(policy_context_user, my_<%= model %>)
+        end
+      end
+
+      context 'Another users <%= model %>' do
+        it 'denies access' do
+          expect(subject).not_to permit(policy_context_user, other_<%= model %>)
+        end
+      end
+    end
+  end
+
+  permissions :destroy? do
+    let!(:my_<%= model %>) { create :<%= model %>, user: user }
+
+    context 'For admins' do
+      it 'allows access' do
+        expect(subject).to permit(policy_context_admin, my_<%= model %>)
+      end
+    end
+
+    context 'For normal users' do
+      let!(:other_<%= model %>) { create :<%= model %> }
+
+      context 'My own <%= model %>' do
+        it 'allows access' do
+          expect(subject).to permit(policy_context_user, my_<%= model %>)
+        end
+      end
+
+      context 'Another users <%= model %>' do
+        it 'denies access' do
+          expect(subject).not_to permit(policy_context_user, other_<%= model %>)
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "required": ["session"],
+  "properties": {
+    "session": {
+      "type": "object",
+      "required": ["id", "access_token", "accessed_at", "revoked_at", "created_at"],
+      "properties": {
+        "id": { "type": "integer" },
+        "access_token": { "type": "datetime" },
+        "accessed_at": { "type": "datetime" },
+        "revoked_at": { "type": "datetime" },
+        "created_at": { "type": "datetime" }
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+module <%= model.singularize.camelize %>Payload
+  def <%= model.singularize.underscore %>_payload(<%= model.singularize.underscore %>)
+    {
+      '<%= model.singularize.underscore %>' => {
+        'id' => <%= model.singularize.underscore %>.id
+      }
+    }
+  end
+
+  def <%= model.pluralize.underscore %>_payload(<%= model.pluralize.underscore %>)
+    array = <%= model.pluralize.underscore %>.map { |item| <%= model.singularize.underscore %>_payload(item)['<%= model.singularize.underscore %>'] }
+
+    {
+      '<%= model.pluralize.underscore %>' => array
+    }
+  end
+end
+
+RSpec.configure do |config|
+  config.include <%= model.singularize.camelize %>Payload, type: :request
+end

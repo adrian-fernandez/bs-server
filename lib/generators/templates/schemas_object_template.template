@@ -1,0 +1,20 @@
+{
+  "type": "object",
+  "required": ["<%= model.pluralize.underscore %>"],
+  "properties": {
+    "<%= model.singularize.underscore %>": {
+      "type": "object",
+      "required": ["id"],
+      "properties": {
+        "id": { "type": "integer" }
+      }
+    },
+    "meta": {
+      "type": "object",
+      "required": ["total_pages"],
+      "properties": {
+        "total_pages": { "type": "integer" }
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+module Api
+  module <%= api_version.upcase %>
+    module Services
+      class <%= model.camelize %>Service < GenericService
+        private
+
+          def sanitized_params
+            params
+              .require(:<%= model.downcase.pluralize.underscore %>)
+              .permit(
+              )
+          end
+      end
+    end
+  end
+end

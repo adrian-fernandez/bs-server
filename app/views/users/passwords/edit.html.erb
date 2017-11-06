@@ -1,0 +1,25 @@
+<div class="middle-box text-center loginscreen  animated fadeInDown">
+  <div>
+    <div>
+        <h1 class="logo-name"></h1>
+    </div>
+    <h3><%=t('devise.fields.change_password')%></h3>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: 'm-t', role: 'form' }) do |f| %>
+      <%= devise_error_messages! %>
+      <%= f.hidden_field :reset_password_token %>
+      <div class="form-group">
+        <%= f.password_field :password, autofocus: true, t('devise.fields.new_password'), autocomplete: "off" %>
+      </div>
+      <div class="form-group">
+        <%= f.password_field :password_confirmation, placeholder: t('devise.fields.confirm_new_password'), autocomplete: "off" %>
+      </div>
+      <button type="submit" class="btn btn-primary block full-width m-b"><%=t('devise.fields.send_reset_password_instructions')%></button>
+    <% end %>
+
+    <p class="m-t"> <small><%= render "devise/shared/links" %></small> </p>
+    <p class="m-t"> <small><%=t('general.footer')%></small> </p>
+  </div>
+</div>
+
+
+

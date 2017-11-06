@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "required": ["rental"],
+  "properties": {
+    "rental": {
+      "type": "object",
+      "required": ["id", "name", "daily_rate", "user_id", "busy_days"],
+      "properties": {
+        "id": { "type": "integer" },
+        "name": { "type": "string" },
+        "daily_rate": { "type": "float" },
+        "user_id": { "type": "integer" },
+        "client_id": { "type": "integer" },
+        "busy_days": { "type": "array" }
+      }
+    }
+  }
+}

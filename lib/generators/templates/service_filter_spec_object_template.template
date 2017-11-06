@@ -1,0 +1,145 @@
+require 'rails_helper'
+RSpec.describe Api::<%= api_version.upcase %>::Filters::RentalFilters do
+  let!(:client) { create(:client) }
+  let!(:user) { create(:user, client: client) }
+
+  let!(:client2) { create(:client) }
+  let!(:user_client2) { create(:user, client: client2) }
+
+  let!(:<%= model_name.singularize.underscore %>1) { create :rental, user: user, client: client }
+  let!(:rental2) { create :<%= model_name.singularize.underscore %>, user: user, client: client }
+  let!(:<%= model_name.singularize.underscore %>3) { create :<%= model_name.singularize.underscore %>, user: user2, client: client }
+  let!(:<%= model_name.singularize.underscore %>4) { create :<%= model_name.singularize.underscore %>, user: user_client2, client: client2 }
+
+  describe '.collection' do
+    let!(:repository) do
+      Api::<%= api_version.upcase %>::Repositories::<%= model_name.singularize.camelize %>Repository.new(
+        current_client: client,
+        current_user: user
+      )
+    end
+
+    it 'should return all the rentals of client' do
+      expect(repository.collection.pluck(:id).sort).to eq(
+        [
+          <%= model_name.singularize.underscore %>1.id,
+          <%= model_name.singularize.underscore %>2.id,
+          <%= model_name.singularize.underscore %>3.id
+        ]
+      )
+    end
+  end
+
+  describe 'QueryFilter' do
+    context 'when find matches' do
+      let!(:repository) do
+        Api::<%= api_version.upcase %>::Repositories::<%= model_name.singularize.camelize %>Repository.new(
+          current_client: client,
+          current_user: user,
+          params: { q: 'sample' }
+        )
+      end
+
+      it 'should return <%= model_name.pluralize.underscore %> filtered by rentals name' do
+        expect(repository.collection.pluck(:id).sort).to eq(
+          [
+
+          ]
+        )
+      end
+    end
+
+    context 'when no find matches' do
+      let!(:repository) do
+        Api::<%= api_version.upcase %>::Repositories::<%= model_name.singularize.camelize %>Repository.new(
+          current_client: client,
+          current_user: user,
+          params: { q: 'nofound' }
+        )
+      end
+
+      it 'should return empty collection' do
+        expect(repository.collection.pluck(:id).sort).to eq(
+          [
+          ]
+        )
+      end
+    end
+  end
+
+  describe 'IdsFilter' do
+    context 'when find matches' do
+      let!(:repository) do
+        Api::<%= api_version.upcase %>::Repositories::<%= model_name.singularize.camelize %>Repository.new(
+          current_client: client,
+          current_user: user,
+          params: { ids: [<%= model_name.singularize.underscore %>1.id, <%= model_name.singularize.underscore %>2.id] }
+        )
+      end
+
+      it 'should return <%= model_name.pluralize.underscore %> filtered by ids' do
+        expect(repository.collection.pluck(:id).sort).to eq(
+          [
+            <%= model_name.singularize.underscore %>1.id,
+            <%= model_name.singularize.underscore %>2.id
+          ]
+        )
+      end
+    end
+
+    context 'when no find matches' do
+      let!(:repository) do
+        Api::<%= api_version.upcase %>::Repositories::<%= model_name.singularize.camelize %>Repository.new(
+          current_client: client,
+          current_user: user,
+          params: { ids: [-1] }
+        )
+      end
+
+      it 'should return empty collection' do
+        expect(repository.collection.pluck(:id).sort).to eq(
+          [
+          ]
+        )
+      end
+    end
+  end
+
+  describe 'ExcludeIdsFilter' do
+    context 'when find matches' do
+      let!(:repository) do
+        Api::<%= api_version.upcase %>::Repositories::<%= model_name.singularize.camelize %>Repository.new(
+          current_client: client,
+          current_user: user,
+          params: { exclude_ids: <%= model_name.singularize.underscore %>1.id }
+        )
+      end
+
+      it 'should return <%= model_name.pluralize.underscore %> filtered by user id' do
+        expect(repository.collection.pluck(:id).sort).to eq(
+          [
+            <%= model_name.singularize.underscore %>2.id,
+            <%= model_name.singularize.underscore %>3.id
+          ]
+        )
+      end
+    end
+
+    context 'when no find matches' do
+      let!(:repository) do
+        Api::<%= api_version.upcase %>::Repositories::<%= model_name.singularize.camelize %>Repository.new(
+          current_client: client,
+          current_user: user,
+          params: { exclude_ids: [<%= model_name.singularize.underscore %>1.id, <%= model_name.singularize.underscore %>2.id, <%= model_name.singularize.underscore %>3.id, <%= model_name.singularize.underscore %>4.id] }
+        )
+      end
+
+      it 'should return empty collection' do
+        expect(repository.collection.pluck(:id).sort).to eq(
+          [
+          ]
+        )
+      end
+    end
+  end
+end

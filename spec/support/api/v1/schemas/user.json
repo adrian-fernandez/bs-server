@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "required": ["user"],
+  "properties": {
+    "user": {
+      "type": "object",
+      "required": ["id", "email", "role_ids", "permissions", "admin"],
+      "properties": {
+        "id": { "type": "integer" },
+        "admin": { "type": "boolean" },
+        "email": { "type": "string" },
+        "client_id": { "type": "integer" },
+        "role_ids": { "type": "array" },
+        "permissions": { "type": "object" }
+      }
+    }
+  }
+}

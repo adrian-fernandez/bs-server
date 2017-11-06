@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "required": ["booking"],
+  "properties": {
+    "booking": {
+      "type": "object",
+      "required": ["id", "price", "days", "rental_id", "user_id"],
+      "properties": {
+        "id": { "type": "integer" },
+        "name": { "type": "string" },
+        "price": { "type": "float" },
+        "days": { "type": "integer" },
+        "rental_id": { "type": "integer" },
+        "user_id": { "type": "integer" },
+        "client_id": { "type": "integer" },
+        "start_at": { "type": "date" },
+        "end_at": { "type": "date" }
+      }
+    }
+  }
+}

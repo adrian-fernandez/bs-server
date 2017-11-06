@@ -1,0 +1,58 @@
+require 'rails_helper'
+RSpec.describe Api::<%=api_version.upcase%>::Sorters::<%= model.singularize.camelize %>Sorter do
+  let!(:client) { create(:client) }
+  let!(:admin_role) { create :role, name: 'admin', client: client }
+  let!(:user) { create(:user, email: 'aaa@aaa.aaa', client: client, role: admin_role) }
+  let!(:user2) { create(:user, email: 'bbb@bbb.bbb', client: client) }
+  let!(:user3) { create(:user, email: 'ccc@ccc.ccc', client: client) }
+
+  let!(:<%= model.singularize.underscore %>1) { create :<%= model.singularize.underscore %>, user: user1, client: client }
+  let!(:<%= model.singularize.underscore %>2) { create :<%= model.singularize.underscore %>, user: user2, client: client }
+  let!(:<%= model.singularize.underscore %>3) { create :<%= model.singularize.underscore %>, user: user3, client: client }
+
+  describe 'Config values' do
+    it '.sortable_felds' do
+      expect(Api::<%= api_version.upcase %>::Sorters::<%= model.singularize.camelize %>Sorter.sortable_fields).to eq(%w[])
+    end
+
+    it '.direct_sorting_fields' do
+      expect(Api::<%= api_version.upcase %>::Sorters::<%= model.singularize.camelize %>Sorter.direct_sorting_fields).to eq(%w[])
+    end
+
+    it '.default_sortbable_field' do
+      expect(Api::<%= api_version.upcase %>::Sorters::<%= model.singularize.camelize %>Sorter.default_sortable_field).to eq(:start_at)
+    end
+
+    it '.table_name' do
+      expect(Api::<%= api_version.upcase %>::Sorters::<%= model.singularize.camelize %>Sorter.table_name).to eq('<%= model.pluralize.underscore%>')
+    end
+  end
+
+  describe 'sort by -field-' do
+    context 'asc' do
+      let!(:repository) do
+        Api::<%= api_version.upcase %>::Repositories::BookingsRepository.new(
+          current_client: client,
+          current_user: user,
+          params: { sort_field: '-field-', sort_direction: 'asc' }
+        )
+      end
+
+      it 'should sort <%= model.pluralize %>s by -field- asc' do
+      end
+    end
+
+    context 'when no find matches' do
+      let!(:repository) do
+        Api::<%= api_version.upcase %>::Repositories::<%= model.pluralize.camelize %>Repository.new(
+          current_client: client,
+          current_user: user,
+          params: { sort_field: '-field-', sort_direction: 'desc' }
+        )
+      end
+
+      it 'should sort <%= model.pluralize %>s by -field- desc' do
+      end
+    end
+  end
+end

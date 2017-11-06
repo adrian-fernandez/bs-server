@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "required": ["<%= model.singularize.downcase.underscore %>"],
+  "properties": {
+    "<%= model.singularize.underscore %>": {
+      "type": "object",
+      "required": ["id"],
+      "properties": {
+        "id": { "type": "integer" }
+      }
+    }
+  }
+}

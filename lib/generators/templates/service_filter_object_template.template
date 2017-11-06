@@ -1,0 +1,17 @@
+module Api
+  module <%= api_version.upcase %>
+    module Filters
+      class <%= model %>Filters
+        class DummyFilter
+          class << self
+            def apply(results, params)
+              return results unless params[:q].present?
+
+              results
+            end
+          end
+        end
+      end
+    end
+  end
+end

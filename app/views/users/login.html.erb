@@ -1,0 +1,29 @@
+<div class="middle-box text-center loginscreen  animated fadeInDown">
+  <div>
+    <div>
+        <h1 class="logo-name"></h1>
+    </div>
+    <h3>Welcome to BS Server</h3>
+    <p><%=t('devise.fields.login')%></p>
+    <%= form_tag api_v1_user_sessions_url(format: :html), method: :post, remote: true, class: 'm-t', role: 'form' do %>
+      <div class="form-group">
+        <%= email_field_tag :email, '', autofocus: true, class: 'form-control', placeholder: t('devise.fields.email'), required: true %>
+      </div>
+      <div class="form-group">
+        <%= password_field_tag :password, '', autofocus: true, class: 'form-control', placeholder: t('devise.fields.password'), required: true %>
+      </div>
+
+      <button type="submit" class="btn btn-primary block full-width m-b"><%=t('devise.fields.login')%></button>
+
+      <% if Client.can_restore_password? %>
+        <a href="<%=%>"><small><%=t('devise.fields.forgot_password')%></small></a>
+      <% end %>
+
+      <% if Client.can_self_register? %>
+        <p class="text-muted text-center"><small><%=t('devise.fields.not_account')%></small></p>
+        <a class="btn btn-sm btn-white btn-block" href="<%=  %>"><%=t('devise.fields.create_account')%></a>
+      <% end %>
+    <% end %>
+    <p class="m-t"> <small><%=t('general.footer')%></small> </p>
+  </div>
+</div>

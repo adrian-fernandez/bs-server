@@ -1,0 +1,13 @@
+module Api
+  module <%= api_version.upcase %>
+    class <%= model.camelize.pluralize%>Controller < BaseController
+      skip_before_action :require_admin
+
+      private
+
+        def object
+          :<%= model %>
+        end
+    end
+  end
+end

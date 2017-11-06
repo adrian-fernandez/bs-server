@@ -1,0 +1,2 @@
+class <%= model.camelize %>Policy < ApplicationPolicy
+end

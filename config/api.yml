@@ -1,0 +1,8 @@
+production:
+  api_version: 'V1'
+
+development:
+  api_version: 'V1'
+
+test:
+  api_version: 'V1'

@@ -1,0 +1,8 @@
+# == Schema Information
+require 'rails_helper'
+
+RSpec.describe <%= model.camelize %> do
+  describe 'validations' do
+    it 'TODO: Complete the tests'
+  end
+end

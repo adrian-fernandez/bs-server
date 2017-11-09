@@ -31,7 +31,7 @@ RSpec.describe Api::V1::Filters::RentalFilters do
         Api::V1::Repositories::RentalsRepository.new(
           current_client: @client,
           current_user: @staff_user,
-          params: { q: 'sample' }
+          params: { q: 'sample rental' }
         )
       end
 

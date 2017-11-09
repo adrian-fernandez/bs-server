@@ -1,8 +1,19 @@
-# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
-
 en:
   devise:
     fields:
+      change_password: Change password
+      confirm_new_password: Confirm new password
+      create_account: Create account
+      email: E-Mail
+      forgot_password: Forgot password
+      login: Login
+      new_password: New password
+      not_account: Don't have an account?
+      password: Password
+      password_confirmation: Password confirmation
+      remember_me: Remember me
+      send_reset_password_instructions: Send me reset password instructions
+      sign_up: Sign up
       email: E-Mail
       password: Password
       password_confirmation: Password confirmation
@@ -19,6 +30,8 @@ en:
       sign_up: Sign up
     confirmations:
       confirmed: "Your email address has been successfully confirmed."
+      new:
+        resend_confirmation_instructions: Resend confirmation instructions
       send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
     failure:
@@ -33,19 +46,41 @@ en:
       unconfirmed: "You have to confirm your email address before continuing."
     mailer:
       confirmation_instructions:
+        action: Confirm account
+        greeting: "Welcome %{recipient}!"
+        instruction: 'You can confirm your account using this link:'
         subject: "Confirmation instructions"
+      password_change:
+        greeting: Hi %{recipient}!
+        message: Your password has changed.
+        subject: "Password Changed"
       reset_password_instructions:
+        action: Change my password
+        greeting: "Hi %{recipient}!"
+        instruction: Someone has requested a link to change your password.
+        instruction_2: If you haven't requested it, please just ignore this e-mail.
+        instruction_3: Your password won't be changed until you access to this link.
         subject: "Reset password instructions"
       unlock_instructions:
+        action: Unlock my account
+        greeting: "Hi %{recipient}!"
+        instruction: 'Click the next link to unlock your account:'
+        message: Your account has been locked due to many failed login attempts.
         subject: "Unlock instructions"
       email_changed:
         subject: "Email Changed"
-      password_change:
-        subject: "Password Changed"
     omniauth_callbacks:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."
     passwords:
+      edit:
+        change_my_password: Change my password
+        change_your_password: Change your password
+        confirm_new_password: Confirm new password
+        new_password: New password
+      new:
+        forgot_your_password: "Have you forgot your password?"
+        send_me_reset_password_instructions: Send me the instructions to reset my password
       no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
       send_instructions: "You will receive an email with instructions on how to reset your password in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
@@ -59,14 +94,38 @@ en:
       signed_up_but_unconfirmed: "A message with a confirmation link has been sent to your email address. Please follow the link to activate your account."
       update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and follow the confirm link to confirm your new email address."
       updated: "Your account has been updated successfully."
+      edit:
+        are_you_sure: "Are you sure?"
+        cancel_my_account: Cancel my account
+        currently_waiting_confirmation_for_email: 'Currently waiting for confirmation of: %{email} '
+        leave_blank_if_you_don_t_want_to_change_it: Lave it blank if you don't want to change it
+        title: Edit %{resource}
+        unhappy: Unhappy
+        update: Update
+        we_need_your_current_password_to_confirm_your_changes: we need your current psasword to confirm your changes
+      new:
+        sign_up: Registrarse
     sessions:
       signed_in: "Signed in successfully."
       signed_out: "Signed out successfully."
       already_signed_out: "Signed out successfully."
+      new:
+        sign_in: New session
     unlocks:
       send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."
       unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+      new:
+        resend_unlock_instructions: Resend unlock instructions
+    shared:
+      links:
+        back: Back
+        didn_t_receive_confirmation_instructions: "Didn't receive confirmation instructions?"
+        didn_t_receive_unlock_instructions: "Didn't receive unlock instructions?"
+        forgot_your_password: "Forgot your password?"
+        sign_in: Sign in
+        sign_in_with_provider: Sign in with %{provider}
+        sign_up: Sign up
   errors:
     messages:
       already_confirmed: "was already confirmed, please try signing in"

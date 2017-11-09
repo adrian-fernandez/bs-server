@@ -6,10 +6,10 @@ RSpec.describe CurrentUserProvider do
   let!(:user_session) { UserSession.create(user: user, accessed_at: Time.now.utc.to_s(:iso8601)) }
   let!(:user_session2) { UserSession.create(user: @admin_user, accessed_at: Time.now.utc.to_s(:iso8601)) }
   let(:provider) do
-    CurrentUserProvider.new({ 'HTTP_X_AUTH_TOKEN' => user_session.access_token }, {})
+    CurrentUserProvider.new({ 'HTTP_X_API_TOKEN' => user_session.access_token }, {})
   end
   let(:provider2) do
-    CurrentUserProvider.new({ 'HTTP_X_AUTH_TOKEN' => '' }, {})
+    CurrentUserProvider.new({ 'HTTP_X_API_TOKEN' => '' }, {})
   end
   after(:all) { UserSession.destroy_all }
 
@@ -32,7 +32,7 @@ RSpec.describe CurrentUserProvider do
       provider.sign_in(@admin_user, {})
 
       expect(UserSession.count).to eq(3)
-      provider = CurrentUserProvider.new({ 'HTTP_X_AUTH_TOKEN' => UserSession.last.access_token }, {})
+      provider = CurrentUserProvider.new({ 'HTTP_X_API_TOKEN' => UserSession.last.access_token }, {})
       expect(provider.current_session.user.id).to eq(@admin_user.id)
     end
   end
@@ -50,7 +50,7 @@ RSpec.describe CurrentUserProvider do
   describe '.current_user' do
     it 'returns the user' do
       provider.sign_in(@admin_user, {})
-      provider = CurrentUserProvider.new({ 'HTTP_X_AUTH_TOKEN' => UserSession.last.access_token }, {})
+      provider = CurrentUserProvider.new({ 'HTTP_X_API_TOKEN' => UserSession.last.access_token }, {})
       expect(provider.current_user.id).to eq(@admin_user.id)
     end
   end

@@ -5,7 +5,7 @@ class RentalSerializer < ApplicationSerializer
     :daily_rate
   )
 
-  has_one :user, include: true, serializer: UserSerializer
+  has_one :user, embed_in_root: true, serializer: UserSerializer
 
   def attributes
     hash = super

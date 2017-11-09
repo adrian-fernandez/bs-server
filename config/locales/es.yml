@@ -1,4 +1,32 @@
 es:
+  activerecord:
+    attributes:
+      user:
+        confirmation_sent_at: Confirmación enviada el
+        confirmation_token: Token de confirmación
+        confirmed_at: Confirmado el
+        created_at: Creado el
+        current_password: Password actual
+        current_sign_in_at: Logeado el
+        current_sign_in_ip: IP del último logeo
+        email: E-Mail
+        encrypted_password: Password cifrado
+        failed_attempts: Intentos fallidos
+        last_sign_in_at: Último logeo el
+        last_sign_in_ip: IP del último logeo
+        locked_at: Bloqueado el
+        password: Password
+        password_confirmation: Confirmación de password
+        remember_created_at: Recordar creado el
+        remember_me: Recordarme
+        reset_password_sent_at: Token de reseteo de password enviado el
+        reset_password_token: Token de reseteo de password
+        sign_in_count: Contador de logueos
+        unconfirmed_email: E-Mail sin confirmar
+        unlock_token: Token de desbloqueo
+        updated_at: Modificado el
+    models:
+      user: User
   general:
     footer: Adrian Fernandez - 2017
   flashes:
@@ -13,8 +41,8 @@ es:
       repository:
         bad_search_fields: 'Intentando realizar una búsqueda con parámetros incorrectos: %{parameters}'
         bad_fuzzy_search_fields: 'Parámetros de búsqueda no válidos para %{klass}'
-
   active_admin:
+    move: Mover
     dashboard: Inicio
     dashboard_welcome:
       welcome: "Bienvenido a Active Admin. Esta es la página de inicio predeterminada."

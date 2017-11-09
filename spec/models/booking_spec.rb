@@ -72,7 +72,7 @@ RSpec.describe Booking do
     let!(:booking3) { create :booking, rental: rental, start_at: Date.today + 1.day, end_at: Date.today + 2.days }
 
     it 'should return bookings that have not yet been complete' do
-      expect(rental.bookings.pending).to eq([booking3, booking2])
+      expect(rental.bookings.pending).to eq([booking2, booking3])
     end
   end
 end

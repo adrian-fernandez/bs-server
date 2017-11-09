@@ -50,7 +50,7 @@ RSpec.describe Api::V1::Filters::UserFilters do
         Api::V1::Repositories::UsersRepository.new(
           current_client: @client,
           current_user: @admin_user,
-          params: { q: 'abcd' }
+          params: { q: 'zzzzz' }
         )
       end
 

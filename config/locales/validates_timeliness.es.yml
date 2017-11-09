@@ -1,0 +1,16 @@
+es:
+  errors:
+    messages:
+      invalid_date: "no es una fecha válida"
+      invalid_time: "no es una hora válida"
+      invalid_datetime: "no es una fecha válida"
+      is_at: "ha de ser en %{restriction}"
+      before: "ha de ser anterior a %{restriction}"
+      on_or_before: "ha de ser igual o anterior a %{restriction}"
+      after: "ha de ser posterior a %{restriction}"
+      on_or_after: "ha de ser igual o posterior a %{restriction}"
+  validates_timeliness:
+    error_value_formats:
+      date: '%d-%m-%Y'
+      time: '%H:%M:%S'
+      datetime: '%d-%m-%Y %H:%M:%S'

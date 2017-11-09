@@ -8,9 +8,10 @@ module Api
               return results unless params[:q].present?
               return results unless params[:fuzzy_search_fields].present?
 
-              fuzzy_fields = params[:fuzzy_search_fields].permit!.to_hash
+              fuzzy_fields = params[:fuzzy_search_fields]
+              fuzzy_fields = fuzzy_fields.permit!.to_hash unless fuzzy_fields.class == Hash
               results = build_joins(results, fuzzy_fields)
-              results.search(fuzzy_fields, false).except(:order)
+              results.fuzzy_search(fuzzy_fields, false).except(:order)
             end
 
             def build_joins(results, fuzzy_fields)

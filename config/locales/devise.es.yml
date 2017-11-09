@@ -1,34 +1,19 @@
 es:
-  activerecord:
-    attributes:
-      user:
-        confirmation_sent_at: Fecha de envío de confirmación
-        confirmation_token: Código de confirmación
-        confirmed_at: Fecha de confirmación
-        created_at: Fecha de creación
-        current_password: Contraseña actual
-        current_sign_in_at: Fecha del ingreso actual
-        current_sign_in_ip: IP del ingreso actual
-        email: Email
-        encrypted_password: Contraseña cifrada
-        failed_attempts: Intentos fallidos
-        last_sign_in_at: Fecha del último ingreso
-        last_sign_in_ip: IP del último ingreso
-        locked_at: Fecha de bloqueo
-        password: Contraseña
-        password_confirmation: Confirmación de la contraseña
-        remember_created_at: Fecha de 'Recordarme'
-        remember_me: Recordarme
-        reset_password_sent_at: Fecha de envío de código para contraseña
-        reset_password_token: Código para restablecer contraseña
-        sign_in_count: Cantidad de ingresos
-        unconfirmed_email: Email no confirmado
-        unlock_token: Código de desbloqueo
-        updated_at: Fecha de actualización
-    models:
-      user: Usuario
   devise:
     fields:
+      change_password: Cambiar contraseña
+      confirm_new_password: Confirmar nueva contraseña
+      create_account: Crear cuenta
+      email: E-Mail
+      forgot_password: Contraseña olvidad
+      login: Login
+      new_password: Nueva contraseña
+      not_account: ¿Aún no tienes una cuenta?
+      password: Password
+      password_confirmation: Confirmación de password
+      remember_me: Recordarme
+      send_reset_password_instructions: Envíame las instrucciones para reestablecer la contraseña
+      sign_up: Registrarse
       email: E-Mail
       password: Contraseña
       password_confirmation: Confirmación de contraseña
@@ -60,6 +45,8 @@ es:
       unauthenticated: Tienes que iniciar sesión o registrarte para poder continuar.
       unconfirmed: Tienes que confirmar tu cuenta para poder continuar.
     mailer:
+      email_changed:
+        subject: "Email ha cambiado"
       confirmation_instructions:
         action: Confirmar mi cuenta
         greeting: "¡Bienvenido %{recipient}!"

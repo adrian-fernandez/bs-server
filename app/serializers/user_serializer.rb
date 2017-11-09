@@ -10,5 +10,5 @@ class UserSerializer < ApplicationSerializer
     object&.admin?
   end
 
-  has_many :roles, include: true
+  has_many :roles, embed_in_root: true
 end

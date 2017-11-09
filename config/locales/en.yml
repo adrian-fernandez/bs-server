@@ -1,4 +1,32 @@
 en:
+  activerecord:
+    attributes:
+      user:
+        confirmation_sent_at: Confirmation send at
+        confirmation_token: Confirmation token
+        confirmed_at: Confirmed at
+        created_at: Created at
+        current_password: Current password
+        current_sign_in_at: Current sign in at
+        current_sign_in_ip: Current sign in ip
+        email: E-Mail
+        encrypted_password: Encrypted password
+        failed_attempts: Failed attempts
+        last_sign_in_at: Last sign in at
+        last_sign_in_ip: Last sign in IP
+        locked_at: Locked at
+        password: Password
+        password_confirmation: Password confirmation
+        remember_created_at: Remember created at
+        remember_me: Remember me
+        reset_password_sent_at: Reset password token sent at
+        reset_password_token: Reset password token
+        sign_in_count: Sign in count
+        unconfirmed_email: Unconfirmed E-Mail
+        unlock_token: Unlock token
+        updated_at: Updated at
+    models:
+      user: User
   general:
     footer: Adrian Fernandez - 2017
   flashes:
@@ -6,14 +34,15 @@ en:
       bad_email_password: You've entered a wrong email or password. Please try again.
       auth_locked: Your account has been locked because of multiple unsuccessful login attempts. Please wait 24 hours or contact support.
   errors:
+    generic: Error
     role:
       invalid_name: Invalid role name
     service:
       repository:
         bad_search_fields: 'Trying to do a fuzzy search with invalid parameters: %{parameters}'
         bad_fuzzy_search_fields: 'Not valid fuzzy search fields was found for %{klass}'
-
   active_admin:
+    move: Move
     dashboard: Dashboard
     dashboard_welcome:
       welcome: "Welcome to Active Admin. This is the default dashboard page."

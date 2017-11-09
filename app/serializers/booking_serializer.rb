@@ -7,6 +7,6 @@ class BookingSerializer < ApplicationSerializer
     :price
   )
 
-  has_one :user, include: true, embed: :ids
-  has_one :rental, include: true, embed: :ids
+  has_one :user, embed_in_root: true
+  has_one :rental, embed_in_root: true
 end

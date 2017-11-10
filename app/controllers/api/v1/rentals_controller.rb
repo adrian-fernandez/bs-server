@@ -16,7 +16,12 @@ module Api
 
         daily_rate_range = repository.rental_daily_rate_ranges
 
-        render json: { rental_statistics: { min_daily_rate: daily_rate_range[:min], max_daily_rate: daily_rate_range[:max] } }
+        render json: {
+          rental_statistics: {
+            min_daily_rate: daily_rate_range[:min],
+            max_daily_rate: daily_rate_range[:max]
+          }
+        }
       end
 
       private

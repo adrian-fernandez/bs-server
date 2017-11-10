@@ -5,9 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'acts_as_tenant'
-gem 'activeadmin', github: 'activeadmin'
 gem 'active_model_serializers', '~> 0.9.3'
+gem 'activeadmin', github: 'activeadmin'
+gem 'acts_as_tenant'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'coffee-rails', '~> 4.2'
@@ -30,7 +30,6 @@ gem 'pundit'
 gem 'rack-cors', require: 'rack/cors'
 gem 'rails', '~> 5.1.3'
 gem 'sass-rails', '~> 5.0.4'
-gem 'uglifier', '>= 1.3.0'
 gem 'sqlite3'
 gem 'textacular', '~> 5.0.1'
 gem 'turbolinks', '~> 5'

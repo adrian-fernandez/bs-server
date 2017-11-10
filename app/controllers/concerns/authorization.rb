@@ -5,15 +5,15 @@ module Authorization
     deny_access unless signed_in?
   end
 
-  # def require_admin
-  #   deny_access unless admin?
-  # end
+  def require_admin
+    deny_access unless admin?
+  end
 
   def require_superadmin
     deny_access unless superadmin?
   end
 
-  def deny_access(flash_message = nil)
+  def deny_access(_flash_message = nil)
     head :unauthorized
   end
 end

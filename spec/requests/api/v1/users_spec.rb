@@ -6,7 +6,7 @@
 require 'rails_helper'
 
 describe Api::V1::UsersController, type: :request do
-  let(:client2) { create :client}
+  let(:client2) { create :client }
   let!(:user2) { create :user, email: 'user2@aaa.aaa' }
   let!(:user3) { create :user, email: 'user3@aaa.aaa' }
 
@@ -85,7 +85,6 @@ describe Api::V1::UsersController, type: :request do
         expect(response.status).to eq(200)
 
         expect(response).to match_json_schema('user')
-
       end
     end
 
@@ -261,7 +260,6 @@ describe Api::V1::UsersController, type: :request do
         expect(response.status).to eq(204)
 
         expect(response.body).to eq('')
-
       end
     end
 

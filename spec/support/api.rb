@@ -63,7 +63,10 @@ RSpec.configure do |config|
     }
     @superadmin_role.save(validate: false)
 
-    @superadmin_user = FactoryGirl.create(:user, password: 'password', password_confirmation: 'password', client: @client)
+    @superadmin_user = FactoryGirl.create(:user,
+                                          password: 'password',
+                                          password_confirmation: 'password',
+                                          client: @client)
     @superadmin_user.roles << @superadmin_role
   end
 

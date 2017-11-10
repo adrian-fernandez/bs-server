@@ -1,6 +1,6 @@
 require 'rails_helper'
 RSpec.describe Api::V1::Services::UserService do
-  let!(:user) { create(:user, email: 'aaa@aaa.aaa', roles: [@staff_role, @admin_role] ) }
+  let!(:user) { create(:user, email: 'aaa@aaa.aaa', roles: [@staff_role, @admin_role]) }
 
   describe '.class_name' do
     let!(:service) do
@@ -138,7 +138,7 @@ RSpec.describe Api::V1::Services::UserService do
       end
 
       it 'should not update anything and return false' do
-        expect{service.update}.to raise_error(
+        expect { service.update }.to raise_error(
           ActionController::ParameterMissing,
           'param is missing or the value is empty: user'
         )

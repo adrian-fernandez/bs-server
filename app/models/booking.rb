@@ -26,7 +26,7 @@ class Booking < ApplicationRecord
   scope :pending, -> { where('end_at > ?', Date.today) }
 
   def to_s
-    "(#{I18n.l(self.start_at)} - #{I18n.l(self.end_at)}) #{rental.name}"
+    "(#{I18n.l(start_at)} - #{I18n.l(end_at)}) #{rental.name}"
   end
 
   def update_days

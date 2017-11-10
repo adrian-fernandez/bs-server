@@ -10,6 +10,7 @@ class UserRole < ApplicationRecord
   before_validation :set_client_id
 
   private
+
     def set_client_id
       self.client_id = ActsAsTenant.current_tenant.id
     end

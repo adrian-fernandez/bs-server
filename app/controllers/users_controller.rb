@@ -1,11 +1,7 @@
 class UsersController < ActionController::Base
   layout 'empty'
 
-  def login
+  def login; end
 
-  end
-
-  def logout
-
-  end
+  def logout; end
 end

@@ -17,7 +17,7 @@ User.create(
   email: 'adrian@adrian-fernandez.net',
   password: 'password',
   password_confirmation: 'password',
-  roles: [admin_role],
+  roles: [superadmin_role],
   client: client
 )
 

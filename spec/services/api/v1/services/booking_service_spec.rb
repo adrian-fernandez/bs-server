@@ -151,7 +151,7 @@ RSpec.describe Api::V1::Services::BookingService do
       end
 
       it 'should not update anything and return false' do
-        expect{service.update}.to raise_error(
+        expect { service.update }.to raise_error(
           ActionController::ParameterMissing,
           'param is missing or the value is empty: booking'
         )

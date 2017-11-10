@@ -28,7 +28,7 @@ class User < ApplicationRecord
   def permissions
     result = {}
     roles.each do |role|
-      result = result.deep_merge(role.permissions) do |k, v1, v2|
+      result = result.deep_merge(role.permissions) do |_k, v1, v2|
         if [v1, v2].include?(true)
           true
         else
@@ -45,11 +45,11 @@ class User < ApplicationRecord
   end
 
   def superadmin?
-    roles.pluck(:name).include?("superadmin")
+    roles.pluck(:name).include?('superadmin')
   end
 
   def to_s
-    self.email
+    email
   end
 
   private

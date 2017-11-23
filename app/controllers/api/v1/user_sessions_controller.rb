@@ -4,7 +4,7 @@ module Api
       protect_from_forgery except: :create
 
       skip_before_action :find_item
-      skip_before_action :require_login, only: %i[create token]
+      skip_before_action :require_login
       skip_before_action :set_paper_trail_whodunnit
 
       def create
@@ -40,7 +40,7 @@ module Api
       private
 
         def session_params
-          params.require(:session).permit(:email, :password)
+          params[:session]&.permit(:email, :password)
         end
 
         def serialize_user_session(user_session)

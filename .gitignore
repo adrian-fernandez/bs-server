@@ -1,1 +1,4 @@
 config/newrelic.yml
+log/
+tmp/
+.byebug_history

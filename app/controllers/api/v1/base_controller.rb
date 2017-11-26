@@ -81,10 +81,6 @@ class Api::V1::BaseController < ApplicationController
 
     def find_item
       @item = model.find(params[:id])
-      if model == Supply
-        @item.generate_pending_supply_url
-        @item.remove_deleted_supply_url
-      end
     end
 
     def object_repository

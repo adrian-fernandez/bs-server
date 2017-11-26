@@ -14,7 +14,7 @@ module Api
 
         if message
           respond_to do |format|
-            format.json { return render json: { errors: { session: [message.html_safe] } }, status: 422 }
+            format.json { return render json: { errors: { session: message.html_safe } }, status: 422 }
             format.html do
               flash[:errors] = message.html_safe
               redirect_to login_users_path

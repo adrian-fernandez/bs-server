@@ -2,7 +2,7 @@ module Api
   module V1
     module Services
       class GenericService
-        attr_reader :item, :current_client, :current_user, :params
+        attr_reader :item, :current_client, :current_user, :params, :errors
 
         def initialize(item: nil, current_client: nil, current_user: nil, params: nil)
           @item = item
@@ -19,6 +19,11 @@ module Api
           end
         end
 
+        def errors
+          return @item.errors if @item
+          @errors
+        end
+
         def update
           return true if @item.update(sanitized_params)
 
@@ -30,7 +35,8 @@ module Api
           begin
             object_params = sanitized_params
             object_params.merge!(client_id: (@current_client).id) if repository::SCOPED_BY_CLIENT
-          rescue ActionController::ParameterMissing
+          rescue ActionController::ParameterMissing => e
+            @errors = e.message
             return false
           end
 

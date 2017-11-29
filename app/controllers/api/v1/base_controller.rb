@@ -31,7 +31,7 @@ class Api::V1::BaseController < ApplicationController
     if service.create
       render json: service.item, status: 201
     else
-      render json: { errors: service.item.errors }, status: 422
+      render json: { errors: service.errors }, status: 422
     end
   end
 

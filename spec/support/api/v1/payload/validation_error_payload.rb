@@ -2,7 +2,11 @@ module ValidationErrorPayload
   def validation_error_payload(*fields_with_messages)
     errors = {}
     fields_with_messages.each do |field_with_messages|
-      if field_with_messages[1].is_a?(Array)
+      if field_with_messages.is_a?(Hash)
+        field_with_messages.keys.each do |key|
+          errors[key.to_s] = I18n.t(field_with_messages[key])
+        end
+      elsif field_with_messages[1].is_a?(Array)
         errors[field_with_messages[0].to_s] = field_with_messages[1].map do |message|
           format_message_from_array(message)
         end

@@ -145,10 +145,6 @@ describe Api::V1::UsersController, type: :request do
         end
       end
     end
-
-    context 'not authenticated' do
-      it_behaves_like 'forbidden', 'post', '/api/v1/users'
-    end
   end
 
   describe 'PUT /users/:id' do

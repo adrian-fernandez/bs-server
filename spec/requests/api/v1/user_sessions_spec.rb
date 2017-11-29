@@ -64,7 +64,7 @@ describe Api::V1::UserSessionsController, type: :request do
           expect(response).to match_json_schema('validation_error')
 
           expect(response.body).to match_json_payload(
-            validation_error_payload([:session, 'flashes.user_session.bad_email_password'])
+            validation_error_payload(session: 'flashes.user_session.bad_email_password')
           )
         end
       end
@@ -81,7 +81,7 @@ describe Api::V1::UserSessionsController, type: :request do
           expect(response).to match_json_schema('validation_error')
 
           expect(response.body).to match_json_payload(
-            validation_error_payload([:session, 'flashes.user_session.bad_email_password'])
+            validation_error_payload(session: 'flashes.user_session.bad_email_password')
           )
         end
 
@@ -108,7 +108,7 @@ describe Api::V1::UserSessionsController, type: :request do
 
           post url, params: invalid_params, headers: {}
           expect(response.body).to match_json_payload(
-            validation_error_payload([:session, 'flashes.user_session.auth_locked'])
+            validation_error_payload(session: 'flashes.user_session.auth_locked')
           )
 
           @staff_user.unlock_authorization!

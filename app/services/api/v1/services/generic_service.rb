@@ -7,6 +7,10 @@ module Api
         def initialize(item: nil, current_client: nil, current_user: nil, params: nil)
           @item = item
           @current_client = current_client
+          if @current_client.blank?
+            @current_client = Client.first
+            ActsAsTenant.current_tenant = @current_client
+          end
           @current_user = current_user
           @params = if params.class == ActionController::Parameters
             params
@@ -25,7 +29,7 @@ module Api
         def create
           begin
             object_params = sanitized_params
-            object_params.merge!(client_id: @current_client.id) if repository::SCOPED_BY_CLIENT
+            object_params.merge!(client_id: (@current_client).id) if repository::SCOPED_BY_CLIENT
           rescue ActionController::ParameterMissing
             return false
           end

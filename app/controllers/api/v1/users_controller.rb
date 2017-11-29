@@ -1,6 +1,8 @@
 module Api
   module V1
     class UsersController < BaseController
+      skip_before_action :require_login, only: [:create]
+
       def me
         return head 404 if current_user.blank?
 

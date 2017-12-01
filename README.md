@@ -14,3 +14,14 @@ DB_PORT_5432_TCP_ADDR=localhost
 ```
 * You can preload DB with sample data: `rake db:seed`
 * Now you can run the project: `bin/rails s`
+
+### Sample data
+After running `rake db:seed` you will have this data in your DB:
+* Users:
+  * Superadmin: adrian@adrian-fernandez.net / password
+  * Admin admin@adrian-bs.com / password
+  * Normal user: user1@adrian-bs.com / password
+  * Normal user: user2@adrian-bs.com / password
+  * Normal user: user3@adrian-bs.com / password
+* 100 random rentals
+* 5 random bookings for each rental (from 3 months ago to 2 months in the future).
